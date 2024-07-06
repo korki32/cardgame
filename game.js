@@ -8,11 +8,15 @@ const phrases = [
     // Add more phrases here
 ];
 
-let usedPhrases = [];
-let cardCount = 0;
+let usedPhrases = JSON.parse(localStorage.getItem('usedPhrases')) || [];
+let cardCount = parseInt(localStorage.getItem('cardCount')) || 0;
+let players = JSON.parse(localStorage.getItem('players')) || [];
+let currentPlayerIndex = parseInt(localStorage.getItem('currentPlayerIndex')) || 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('total-cards').textContent = phrases.length;
+    document.getElementById('card-count').textContent = cardCount;
+    document.getElementById('current-player').textContent = `Játékos: ${players[currentPlayerIndex]}`;
     document.getElementById('card').addEventListener('touchstart', function() {
         flipCard();
     });
@@ -34,5 +38,18 @@ function flipCard() {
         document.getElementById('card-text').textContent = selectedPhrase;
         cardCount++;
         document.getElementById('card-count').textContent = cardCount;
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+        document.getElementById('current-player').textContent = `Játékos: ${players[currentPlayerIndex]}`;
+        saveGameState();
     }
+}
+
+function saveGameState() {
+    localStorage.setItem('usedPhrases', JSON.stringify(usedPhrases));
+    localStorage.setItem('cardCount', cardCount.toString());
+    localStorage.setItem('currentPlayerIndex', currentPlayerIndex.toString());
+}
+
+function saveGame() {
+    alert('A játék állapota elmentve.');
 }
