@@ -17,3 +17,7 @@ function flipCard() {
         document.getElementById('card-text').textContent = phrases[randomIndex];
     }
 }
+
+document.getElementById('card').addEventListener('touchstart', function() {
+    flipCard();
+});
