@@ -8,12 +8,23 @@
 </head>
 <body>
     <div class="container">
-        <button onclick="startGame()">Új játék</button>
+        <h1>Én még sosem játék</h1>
+        <form id="player-form">
+            <label for="players">Add meg a játékosok nevét (vesszővel elválasztva):</label><br>
+            <input type="text" id="players" name="players" required><br><br>
+            <button type="submit">Új játék</button>
+        </form>
     </div>
     <script>
-        function startGame() {
+        document.getElementById('player-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const players = document.getElementById('players').value.split(',').map(name => name.trim());
+            localStorage.setItem('players', JSON.stringify(players));
+            localStorage.setItem('usedPhrases', JSON.stringify([]));
+            localStorage.setItem('cardCount', '0');
+            localStorage.setItem('currentPlayerIndex', '0');
             window.location.href = "game.html";
-        }
+        });
     </script>
 </body>
 </html>
