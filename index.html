@@ -19,12 +19,13 @@
         document.getElementById('player-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const players = document.getElementById('players').value.split(',').map(name => name.trim());
-            localStorage.setItem('players', JSON.stringify(players));
-            localStorage.setItem('usedPhrases', JSON.stringify([]));
-            localStorage.setItem('cardCount', '0');
-            localStorage.setItem('currentPlayerIndex', '0');
+            sessionStorage.setItem('players', JSON.stringify(players));
+            sessionStorage.setItem('usedPhrases', JSON.stringify([]));
+            sessionStorage.setItem('cardCount', '0');
+            sessionStorage.setItem('currentPlayerIndex', '0');
             window.location.href = "game.html";
         });
     </script>
 </body>
 </html>
+
