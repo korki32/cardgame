@@ -4,12 +4,25 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
     font-family: Arial, sans-serif;
 }
 
 .container, .game-container {
     text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+label {
+    font-size: 18px;
+    color: #555;
 }
 
 button {
@@ -21,10 +34,19 @@ button {
     color: white;
     cursor: pointer;
     margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 button:hover {
     background-color: #0056b3;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.counter {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #333;
 }
 
 .card {
@@ -35,6 +57,7 @@ button:hover {
     perspective: 1000px;
     cursor: pointer;
     margin: 20px auto;
+    border-radius: 10px;
 }
 
 .card .front, .card .back {
@@ -47,7 +70,7 @@ button:hover {
     align-items: center;
     border: 2px solid #ccc;
     border-radius: 10px;
-    background-color: #fff;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.6s;
     padding: 20px;
@@ -56,8 +79,13 @@ button:hover {
     font-size: calc(16px + 1vw);
 }
 
+.card .front {
+    background: linear-gradient(145deg, #e0e0e0, #ffffff);
+}
+
 .card .back {
     transform: rotateY(180deg);
+    background: linear-gradient(145deg, #f0f0f0, #cccccc);
 }
 
 .card.flipped .front {
@@ -67,6 +95,7 @@ button:hover {
 .card.flipped .back {
     transform: rotateY(360deg);
 }
+
 
 .counter {
     font-size: 18px;
