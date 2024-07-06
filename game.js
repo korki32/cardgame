@@ -47,5 +47,7 @@ function flipCard() {
 }
 
 function updateCurrentPlayer() {
-    document.getElementById('current-player').textContent = `Játékos: ${players[currentPlayerIndex]}`;
+    if (players.length > 0) {
+        document.getElementById('current-player').textContent = `Játékos: ${players[currentPlayerIndex]}`;
+    }
 }
