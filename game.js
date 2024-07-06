@@ -8,15 +8,15 @@ const phrases = [
     // Add more phrases here
 ];
 
-let usedPhrases = JSON.parse(localStorage.getItem('usedPhrases')) || [];
-let cardCount = parseInt(localStorage.getItem('cardCount')) || 0;
-let players = JSON.parse(localStorage.getItem('players')) || [];
-let currentPlayerIndex = parseInt(localStorage.getItem('currentPlayerIndex')) || 0;
+let usedPhrases = JSON.parse(sessionStorage.getItem('usedPhrases')) || [];
+let cardCount = parseInt(sessionStorage.getItem('cardCount')) || 0;
+let players = JSON.parse(sessionStorage.getItem('players')) || [];
+let currentPlayerIndex = parseInt(sessionStorage.getItem('currentPlayerIndex')) || 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('total-cards').textContent = phrases.length;
     document.getElementById('card-count').textContent = cardCount;
-    document.getElementById('current-player').textContent = `Játékos: ${players[currentPlayerIndex]}`;
+    updateCurrentPlayer();
     document.getElementById('card').addEventListener('touchstart', function() {
         flipCard();
     });
@@ -39,17 +39,13 @@ function flipCard() {
         cardCount++;
         document.getElementById('card-count').textContent = cardCount;
         currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
-        document.getElementById('current-player').textContent = `Játékos: ${players[currentPlayerIndex]}`;
-        saveGameState();
+        updateCurrentPlayer();
+        sessionStorage.setItem('usedPhrases', JSON.stringify(usedPhrases));
+        sessionStorage.setItem('cardCount', cardCount.toString());
+        sessionStorage.setItem('currentPlayerIndex', currentPlayerIndex.toString());
     }
 }
 
-function saveGameState() {
-    localStorage.setItem('usedPhrases', JSON.stringify(usedPhrases));
-    localStorage.setItem('cardCount', cardCount.toString());
-    localStorage.setItem('currentPlayerIndex', currentPlayerIndex.toString());
-}
-
-function saveGame() {
-    alert('A játék állapota elmentve.');
+function updateCurrentPlayer() {
+    document.getElementById('current-player').textContent = `Játékos: ${players[currentPlayerIndex]}`;
 }
