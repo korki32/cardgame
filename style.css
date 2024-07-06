@@ -8,6 +8,24 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.container, .game-container {
+    text-align: center;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
 .card {
     width: 80vw;
     height: 60vh;
@@ -15,6 +33,7 @@ body {
     max-height: 450px;
     perspective: 1000px;
     cursor: pointer;
+    margin: 20px auto;
 }
 
 .card .front, .card .back {
@@ -46,4 +65,9 @@ body {
 
 .card.flipped .back {
     transform: rotateY(360deg);
+}
+
+.counter {
+    font-size: 18px;
+    margin-top: 20px;
 }
