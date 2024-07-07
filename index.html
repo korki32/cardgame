@@ -3,27 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Én még sosem játék</title>
+    <title>Én még sosem - Játék</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Én még sosem játék</h1>
+        <h1>Én még sosem - Játék</h1>
         <form id="player-form">
-            <label for="players">Add meg a játékosok nevét (vesszővel elválasztva):</label><br>
-            <input type="text" id="players" name="players" required><br><br>
-            <button type="submit">Új játék</button>
+            <label for="players">Játékosok nevei (vesszővel elválasztva):</label>
+            <input type="text" id="players" name="players" required>
+            <div>
+                <input type="checkbox" id="include-special-cards" name="include-special-cards">
+                <label for="include-special-cards">Különleges kártyák bekapcsolása</label>
+            </div>
+            <button type="submit">Új Játék</button>
         </form>
     </div>
     <script>
-        document.getElementById('player-form').addEventListener('submit', function(e) {
-            e.preventDefault();
+        document.getElementById('player-form').addEventListener('submit', function(event) {
+            event.preventDefault();
             const players = document.getElementById('players').value.split(',').map(name => name.trim());
+            const includeSpecialCards = document.getElementById('include-special-cards').checked;
             sessionStorage.setItem('players', JSON.stringify(players));
-            sessionStorage.setItem('usedPhrases', JSON.stringify([]));
-            sessionStorage.setItem('cardCount', '0');
-            sessionStorage.setItem('currentPlayerIndex', '0');
-            window.location.href = "game.html";
+            sessionStorage.setItem('includeSpecialCards', includeSpecialCards);
+            window.location.href = 'game.html';
         });
     </script>
 </body>
