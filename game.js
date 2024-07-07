@@ -36,10 +36,10 @@ function flipCard() {
 
         if (selectedPhrase.startsWith("Különleges kártya:")) {
             handleSpecialCard(selectedPhrase);
-            card.classList.add('special-card');
+            card.classList.add('special-card', 'special-card-animation');
         } else {
             document.getElementById('card-text').textContent = selectedPhrase;
-            card.classList.remove('special-card');
+            card.classList.remove('special-card', 'special-card-animation');
         }
 
         cardCount++;
