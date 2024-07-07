@@ -39,8 +39,19 @@
             const includeSpecialCards = document.getElementById('include-special-cards').checked;
             sessionStorage.setItem('players', JSON.stringify(players));
             sessionStorage.setItem('includeSpecialCards', includeSpecialCards);
-            window.location.href = 'game.html';
+            const button = event.target.querySelector('.new-game-button');
+            animateButton(button);
+            setTimeout(() => {
+                window.location.href = 'game.html';
+            }, 750);
         });
+
+        function animateButton(element) {
+            element.classList.add('animate');
+            element.addEventListener('animationend', () => {
+                element.classList.remove('animate');
+            });
+        }
     </script>
 </body>
 </html>
