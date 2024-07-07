@@ -129,3 +129,74 @@ body {
         font-size: 0.9em;
     }
 }
+
+/* Toggle Switch */
+.tgl {
+    display: none;
+}
+
+.tgl + .tgl-btn {
+    outline: 0;
+    display: block;
+    width: 4em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    background: #888;
+    overflow: hidden;
+    transform: skew(-10deg);
+    transition: all .2s ease;
+}
+
+.tgl + .tgl-btn:after,
+.tgl + .tgl-btn:before {
+    position: absolute;
+    content: "";
+    width: 50%;
+    height: 100%;
+    transition: all .2s ease;
+}
+
+.tgl + .tgl-btn:after {
+    left: 0;
+}
+
+.tgl + .tgl-btn:before {
+    left: 100%;
+}
+
+.tgl:checked + .tgl-btn {
+    background: #86d993;
+}
+
+.tgl:checked + .tgl-btn:after {
+    left: 50%;
+}
+
+.tgl:checked + .tgl-btn:before {
+    left: 0;
+}
+
+/* Toggle Button Labels */
+.tgl + .tgl-btn:before {
+    content: attr(data-tg-off);
+    display: inline-block;
+    text-align: center;
+    line-height: 2em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0,0,0,.4);
+    transform: skew(10deg);
+}
+
+.tgl:checked + .tgl-btn:after {
+    content: attr(data-tg-on);
+    display: inline-block;
+    text-align: center;
+    line-height: 2em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0,0,0,.4);
+    transform: skew(10deg);
+}
