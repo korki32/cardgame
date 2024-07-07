@@ -34,12 +34,11 @@ body {
     left: 0;
     width: 100%;
     margin: 0 auto;
-    border: 4px double rgba(255, 255, 255, .25);
     padding: 1.5em 0;
 }
 
 .header h1 span {
-    font: 700 4em/1 "Oswald", sans-serif;
+    font: 300 4em/1 "Oswald", sans-serif;
     letter-spacing: 0;
     padding: .25em 0 .325em;
     display: block;
