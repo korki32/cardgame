@@ -20,6 +20,11 @@
         </form>
     </div>
     <script>
+        // Töröljük a korábbi játék állapotát, amikor az oldal betöltődik
+        window.onload = function() {
+            sessionStorage.clear();
+        };
+
         document.getElementById('player-form').addEventListener('submit', function(event) {
             event.preventDefault();
             const players = document.getElementById('players').value.split(',').map(name => name.trim());
@@ -31,4 +36,3 @@
     </script>
 </body>
 </html>
-
