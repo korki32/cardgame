@@ -1,4 +1,8 @@
 /* fooldal.css */
+$fuschia: #ff0081;
+$button-bg: $green;
+$button-text-color: #fff;
+$baby-blue: #f8faff;
 
 body {
     font-family: "Neuton", sans-serif;
@@ -188,17 +192,6 @@ body {
     left: -100%;
     display: none;
 }
-$fuschia: #ff0081;
-$button-bg: $green;
-$button-text-color: #fff;
-$baby-blue: #f8faff;
-
-body {
-  font-size: 16px;
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  text-align: center;
-  background-color: $baby-blue;
-}
 
 .new-game-button {
   font-family: 'Helvetica', 'Arial', sans-serif;
@@ -304,6 +297,6 @@ body {
   }
   100% {
     background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
   }
 }
