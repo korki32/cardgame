@@ -9,7 +9,7 @@ var animateButton = function(e) {
   }, 700);
 };
 
-var bubblyButtons = document.getElementsByClassName("bubbly-button");
+var bubblyButtons = document.getElementsByClassName("new-game-button);
 
 for (var i = 0; i < bubblyButtons.length; i++) {
   bubblyButtons[i].addEventListener('click', animateButton, false);
