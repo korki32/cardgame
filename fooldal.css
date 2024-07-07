@@ -82,3 +82,38 @@ body {
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
 }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .header h1 span {
+        font-size: 2.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.2em;
+    }
+
+    .header h1 span {
+        font-size: 2em;
+    }
+
+    .container {
+        margin-top: 10px;
+        padding: 0 5px;
+    }
+
+    .container input[type="text"] {
+        font-size: 0.9em;
+    }
+
+    .container button[type="submit"] {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+}
