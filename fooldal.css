@@ -143,7 +143,7 @@ body {
     position: relative;
     cursor: pointer;
     user-select: none;
-    background: #888;
+    background: #e74c3c; /* Piros szín alaphelyzetben */
     overflow: hidden;
     transform: skew(-10deg);
     transition: all .2s ease;
@@ -167,7 +167,7 @@ body {
 }
 
 .tgl:checked + .tgl-btn {
-    background: #86d993;
+    background: #2ecc71; /* Zöld szín bekapcsolt állapotban */
 }
 
 .tgl:checked + .tgl-btn:after {
