@@ -153,17 +153,26 @@ body {
 .tgl + .tgl-btn:before {
     position: absolute;
     content: "";
-    width: 50%;
+    width: 100%;
     height: 100%;
     transition: all .2s ease;
-}
-
-.tgl + .tgl-btn:after {
-    left: 0;
+    text-align: center;
+    line-height: 2em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0,0,0,.4);
+    transform: skew(10deg);
 }
 
 .tgl + .tgl-btn:before {
+    content: attr(data-tg-off);
+    left: 0;
+}
+
+.tgl + .tgl-btn:after {
+    content: attr(data-tg-on);
     left: 100%;
+    display: none;
 }
 
 .tgl:checked + .tgl-btn {
@@ -171,32 +180,11 @@ body {
 }
 
 .tgl:checked + .tgl-btn:after {
-    left: 50%;
+    left: 0;
+    display: inline-block;
 }
 
 .tgl:checked + .tgl-btn:before {
-    left: 0;
-}
-
-/* Toggle Button Labels */
-.tgl + .tgl-btn:before {
-    content: attr(data-tg-off);
-    display: inline-block;
-    text-align: center;
-    line-height: 2em;
-    font-weight: bold;
-    color: #fff;
-    text-shadow: 0 1px 0 rgba(0,0,0,.4);
-    transform: skew(10deg);
-}
-
-.tgl:checked + .tgl-btn:after {
-    content: attr(data-tg-on);
-    display: inline-block;
-    text-align: center;
-    line-height: 2em;
-    font-weight: bold;
-    color: #fff;
-    text-shadow: 0 1px 0 rgba(0,0,0,.4);
-    transform: skew(10deg);
+    left: -100%;
+    display: none;
 }
