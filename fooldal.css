@@ -71,7 +71,7 @@ body {
 }
 
 .form-group input[type="checkbox"] {
-    margin-right: 5px;
+    display: none;
 }
 
 .container button[type="submit"] {
