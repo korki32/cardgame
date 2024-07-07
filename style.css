@@ -90,7 +90,11 @@ button:hover {
     transform: rotateY(360deg);
 }
 
-.special-card {
+.special-card .back {
+    background-color: #ff6347; /* Special card back color */
+}
+
+.special-card-animation {
     animation: shine 1s ease-in-out forwards;
 }
 
