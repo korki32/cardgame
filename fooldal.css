@@ -9,22 +9,6 @@ body {
     padding: 0;
 }
 
-.header {
-    font-family: "Neuton", sans-serif;
-    color: rgba(255, 255, 255, .25);
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    margin: 0;
-    background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-animation: aitf 80s linear infinite;
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
-}
-
 .header h1 {
     font-size: 2em;
     text-transform: uppercase;
