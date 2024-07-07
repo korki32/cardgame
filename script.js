@@ -1,12 +1,20 @@
-const phrases = [
-    "Én még sosem ettem sushi-t.",
-    "Én még sosem voltam külföldön.",
-    "Én még sosem láttam a tengert.",
-    "Én még sosem ugráltam ejtőernyővel.",
-    "Én még sosem ettem egy egész tortát egyedül.",
-    "Én még sosem voltam éjszakai túrán.",
-    // Add more phrases here
-];
+var animateButton = function(e) {
+
+  e.preventDefault;
+  //reset animation
+  e.target.classList.remove('animate');
+  
+  e.target.classList.add('animate');
+  setTimeout(function(){
+    e.target.classList.remove('animate');
+  },700);
+};
+
+var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+for (var i = 0; i < bubblyButtons.length; i++) {
+  bubblyButtons[i].addEventListener('click', animateButton, false);
+}
 
 function flipCard() {
     const card = document.getElementById('card');
