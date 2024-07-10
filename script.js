@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 700);
     };
 
-    const bubblyButtons = document.getElementsByClassName("bubbly-button");
+    const bubblyButtons = document.getElementsByClassName("bubbly-buttonsss");
 
     for (let i = 0; i < bubblyButtons.length; i++) {
         bubblyButtons[i].addEventListener('click', animateButton, false);
