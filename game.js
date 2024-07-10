@@ -49,6 +49,10 @@ function flipCard() {
         sessionStorage.setItem('usedPhrases', JSON.stringify(usedPhrases));
         sessionStorage.setItem('cardCount', cardCount.toString());
         sessionStorage.setItem('currentPlayerIndex', currentPlayerIndex.toString());
+
+        const remainingPercentage = (remainingPhrases.length / phrases.length) * 100;
+        document.getElementById('remaining-bar').style.width = `${remainingPercentage}%`;
+        
     } else {
         card.classList.remove('special-card');
     }
