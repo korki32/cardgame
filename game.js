@@ -49,15 +49,20 @@ function flipCard() {
         sessionStorage.setItem('usedPhrases', JSON.stringify(usedPhrases));
         sessionStorage.setItem('cardCount', cardCount.toString());
         sessionStorage.setItem('currentPlayerIndex', currentPlayerIndex.toString());
-
-        const remainingPercentage = (remainingPhrases.length / phrases.length) * 100;
-        document.getElementById('remaining-bar').style.width = `${remainingPercentage}%`;
-        const beerMug = document.getElementById('beer-mug');
-        beerMug.style.transform = `translateY(${100 - remainingPercentage}%)`;
         
+        updateBeerMug();
     } else {
         card.classList.remove('special-card');
     }
+}
+
+function updateBeerMug() {
+    const totalCards = phrases.length;
+    const usedCards = usedPhrases.length;
+
+    // Számítsuk ki a sörös korsó magasságát a felhasznált kártyák alapján
+    const remainingHeight = (usedCards / totalCards) * 100; // Százalékos magasság kiszámítása
+    document.getElementById('beer-mug').style.transform = `translateY(${100 - remainingHeight}%)`;
 }
 
 function handleSpecialCard(phrase) {
