@@ -144,8 +144,7 @@ button:hover {
     width: 100%; /* Kezdeti szélesség */
     border-radius: 5px;
     overflow: hidden; /* Túlcsorduló tartalom elrejtése */
-    position: absolute; /* Abszolút pozíció beállítása a gyerek elemhez */
-    bottom: 0; /* Alsó pozíció beállítása */
+    position: relative; /* Relatív pozíció beállítása a gyerek elemhez */
 }
 
 #beer-mug {
