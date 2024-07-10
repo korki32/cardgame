@@ -198,13 +198,6 @@ body {
   --baby-blue: #f8faff;
 }
 
-body {
-  font-size: 16px;
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  text-align: center;
-  background-color: var(--baby-blue);
-}
-
 .bubbly-button {
   font-family: 'Helvetica', 'Arial', sans-serif;
   display: inline-block;
