@@ -52,6 +52,8 @@ function flipCard() {
 
         const remainingPercentage = (remainingPhrases.length / phrases.length) * 100;
         document.getElementById('remaining-bar').style.width = `${remainingPercentage}%`;
+        const beerMug = document.getElementById('beer-mug');
+        beerMug.style.transform = `translateY(${100 - remainingPercentage}%)`;
         
     } else {
         card.classList.remove('special-card');
