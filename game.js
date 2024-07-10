@@ -36,10 +36,10 @@ function flipCard() {
 
         if (selectedPhrase.startsWith("Különleges kártya:")) {
             handleSpecialCard(selectedPhrase);
-            card.classList.add('special-card', 'special-card-animation');
+            card.classList.add('special-card');
         } else {
             document.getElementById('card-text').textContent = selectedPhrase;
-            card.classList.remove('special-card', 'special-card-animation');
+            card.classList.remove('special-card');
         }
 
         cardCount++;
@@ -49,6 +49,8 @@ function flipCard() {
         sessionStorage.setItem('usedPhrases', JSON.stringify(usedPhrases));
         sessionStorage.setItem('cardCount', cardCount.toString());
         sessionStorage.setItem('currentPlayerIndex', currentPlayerIndex.toString());
+    } else {
+        card.classList.remove('special-card');
     }
 }
 
@@ -57,6 +59,15 @@ function handleSpecialCard(phrase) {
     const randomPlayer = players[randomPlayerIndex];
     let message = phrase.replace("válassz egy játékost", randomPlayer);
     document.getElementById('card-text').textContent = message;
+    animateSpecialEffect();
+}
+
+function animateSpecialEffect() {
+    const card = document.getElementById('card');
+    card.classList.add('special-card-animation');
+    setTimeout(() => {
+        card.classList.remove('special-card-animation');
+    }, 1000); // Adjust timing as needed
 }
 
 function updateCurrentPlayer() {
