@@ -50,17 +50,16 @@ function flipCard() {
         sessionStorage.setItem('cardCount', cardCount.toString());
         sessionStorage.setItem('currentPlayerIndex', currentPlayerIndex.toString());
         
-        updateBeerMug();
+        // Frissítjük a még elérhető kártyák sáv szélességét és animáljuk a korsó mozgását
+        const remainingPercentage = (remainingPhrases.length / phrases.length) * 100;
+        document.getElementById('remaining-bar').style.width = `${remainingPercentage}%`;
+
+        // Animáljuk a sörös korsó mozgását
+        const beerMug = document.getElementById('beer-mug');
+        beerMug.style.transform = `translateY(${100 - remainingPercentage}%)`;
     } else {
         card.classList.remove('special-card');
     }
-}
-
-function updateBeerMug() {
-    const remainingPercentage = (remainingPhrases.length / phrases.length) * 100;
-    document.getElementById('remaining-bar').style.width = `${remainingPercentage}%`;
-    const beerMug = document.getElementById('beer-mug');
-    beerMug.style.transform = `translateY(${100 - remainingPercentage}%)`;
 }
 
 function handleSpecialCard(phrase) {
