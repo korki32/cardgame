@@ -2,23 +2,38 @@ let usedPhrases = JSON.parse(sessionStorage.getItem('usedPhrases')) || [];
 let cardCount = parseInt(sessionStorage.getItem('cardCount')) || 0;
 let players = JSON.parse(sessionStorage.getItem('players')) || [];
 let currentPlayerIndex = parseInt(sessionStorage.getItem('currentPlayerIndex')) || 0;
+let includeNormalCards = sessionStorage.getItem('includeNormalCards') === 'true';
+let include18PlusCards = sessionStorage.getItem('include18PlusCards') === 'true';
 let includeSpecialCards = sessionStorage.getItem('includeSpecialCards') === 'true';
-let phrases = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('phrases.json')
-        .then(response => response.json())
-        .then(data => {
-            phrases = data;
-            if (!includeSpecialCards) {
-                phrases = phrases.filter(phrase => !phrase.startsWith("Különleges kártya:"));
-            }
+    loadPhrases();
+});
+
+function loadPhrases() {
+    let promises = [];
+    
+    if (includeNormalCards) {
+        promises.push(fetch('normal.json').then(response => response.json()));
+    }
+    if (include18PlusCards) {
+        promises.push(fetch('18plus.json').then(response => response.json()));
+    }
+    if (includeSpecialCards) {
+        promises.push(fetch('special.json').then(response => response.json()));
+    }
+    
+    Promise.all(promises)
+        .then(results => {
+            results.forEach(data => {
+                phrases = phrases.concat(data);
+            });
             document.getElementById('total-cards').textContent = phrases.length;
             document.getElementById('card-count').textContent = cardCount;
             updateCurrentPlayer();
         })
         .catch(error => console.error('Error loading phrases:', error));
-});
+}
 
 function flipCard() {
     const card = document.getElementById('card');
@@ -34,7 +49,8 @@ function flipCard() {
         const selectedPhrase = remainingPhrases[randomIndex];
         usedPhrases.push(selectedPhrase);
 
-        if (selectedPhrase.startsWith("Különleges kártya:")) {
+        // Ellenőrizni kell, hogy a kártya különleges-e
+        if (phrases.includes(selectedPhrase)) {
             handleSpecialCard(selectedPhrase);
             card.classList.add('special-card');
         } else {
@@ -82,4 +98,36 @@ function updateCurrentPlayer() {
     if (players.length > 0) {
         document.getElementById('current-player').textContent = `Játékos: ${players[currentPlayerIndex]}`;
     }
+}
+
+document.getElementById('player-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    
+    const playerNames = document.getElementById('players').value.split(',').map(name => name.trim());
+    const includeNormalCards = document.getElementById('include-normal-cards').checked;
+    const include18Cards = document.getElementById('include-18-cards').checked;
+    const includeSpecialCards = document.getElementById('include-special-cards').checked;
+
+    if (playerNames.length === 0) {
+        alert('Kérlek, adj meg legalább egy játékos nevet!');
+        return;
+    }
+
+    sessionStorage.setItem('players', JSON.stringify(playerNames));
+    sessionStorage.setItem('includeNormalCards', includeNormalCards.toString());
+    sessionStorage.setItem('include18Cards', include18Cards.toString());
+    sessionStorage.setItem('includeSpecialCards', includeSpecialCards.toString());
+
+    startGame(playerNames, includeNormalCards, include18Cards, includeSpecialCards);
+});
+
+function startGame(playerNames, includeNormalCards, include18Cards, includeSpecialCards) {
+    players = playerNames;
+    currentPlayerIndex = 0;
+    usedPhrases = [];
+    cardCount = 0;
+    sessionStorage.setItem('usedPhrases', JSON.stringify(usedPhrases));
+    sessionStorage.setItem('cardCount', cardCount.toString());
+    sessionStorage.setItem('currentPlayerIndex', currentPlayerIndex.toString());
+    loadPhrases();
 }
