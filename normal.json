@@ -1,5 +1,4 @@
-{
-    "normal": [
+[
         "Én még sosem sírtam nyilvánosan.",
         "Én még sosem tévedtem el éjszaka.",
         "Én még sosem küldtem italt idegennek.",
@@ -33,47 +32,4 @@
         "Én még sosem votlam szerelmes hírességbe.",
         "Én még sosem ittam meg más italát, amíg nem figyelt.",
         "Én még sosem lőttem fegyverrel."
-    ],
-    "+18": [
-        "Én még sosem használtam szexjátékszert.",
-        "Én még sosem néztem pornót a párommal.",
-        "Én még sosem maszturbáltam nyilvános helyen.",
-        "Én még sosem csókoltam meg azonos nemű személyt.",
-        "Én még sosem kaptam nude fotót valakitől.",
-        "Én még sosem szexeltem az autóban.",
-        "Én még sosem kerestem fel szexuális tanácsadót.",
-        "Én még sosem csaltam meg senkit.",
-        "Én még sosem színleltem orgazmust.",
-        "Én még sosem vettem el senkinek a szüzességét.",
-        "Én még sosem meztelenkedtem nyilvánosan.",
-        "Én még sosem voltam szex shopban.",
-        "Én még sosem fizettem felnőtt tartalomért.",
-        "Én még sosem voltam sztriptíz klubban.",
-        "Én még sosem feküdtem le senkivel az első randin.",
-        "Én még sosem készítettem szexi szelfit.",
-        "Én még sosem szexeltem gumi nélkül.",
-        "Én még sosem álmodtam szexuális álmot valakiről az ittlévők közül.",
-        "Én még sosem maszturbáltam Wc-n ülve.",
-        "Én még sosem szexeltem, olyannal ki nem beszélt magyarul.",
-        "Én még sosem beszéltem a szüleimnek az egyéjszakás kalandjaimról.",
-        "Én még sosem neveztem el a partnerem nemiszervét.",
-        "Én még sosem maszturbáltam egy nap többször.",
-        "Én még sosem szexeltem fogszabályozóssal.",
-        "Én még sosem szexeltem egy nap alatt, több emberrel is.",
-        "Én még sosem kaptam el nemibetegséget.",
-        "Én még sosem drogoztam és ittam egyszerre.",
-        "Én még sosem vettem részt orgiában.",
-        "Én még sosem ettem valkinek a meztelen testéről.",
-        "Én még sosem vettem fel ehető fehérneműt.",
-        "Én még sosem szexeltem egy próbafülkében.",
-        "Én még sosem készítettem meztelen képeket egy barátomról.",
-        "Én még sosem szexeltem, több mint 3 órán át."
-    ],
-    "merj": [
-        "Különleges kártya: Tartsd a kezét: Tartsd a melletted ülő játékos kezét 5 körön keresztül!",
-        "Különleges kártya: Játssz duettet: Énekelj egy dalt egy általad választott játékossal!",
-        "Különleges kártya: Állati hang: Utánozz egy állat hangját egy másik játékossal 3 körön keresztül!",
-        "Különleges kártya: Táncolj egyet: Táncolj egyet egy általad választott játékossal!",
-        "Különleges kártya: Becenév: Adj egy becenevet egy játékosnak, amit 5 körön keresztül használni kell!"
     ]
-}
