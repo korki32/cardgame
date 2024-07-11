@@ -6,9 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const players = document.getElementById('players').value.split(',').map(name => name.trim());
         const includeSpecialCards = document.getElementById('include-special-cards').checked;
+        const includeNormalCards = document.getElementById('include-normal-cards').checked;
+        const include18PlusCards = document.getElementById('include-18-cards').checked;
 
         sessionStorage.setItem('players', JSON.stringify(players));
         sessionStorage.setItem('includeSpecialCards', includeSpecialCards);
+        sessionStorage.setItem('includeNormalCards', includeNormalCards);
+        sessionStorage.setItem('include18PlusCards', include18PlusCards);
 
         window.location.href = 'game.html'; // Átirányítás a game.html oldalra
     });
