@@ -8,6 +8,7 @@ let includeSpecialCards = sessionStorage.getItem('includeSpecialCards') === 'tru
 let phrases = [];
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Document loaded, loading phrases...');
     loadPhrases();
 });
 
@@ -15,12 +16,15 @@ function loadPhrases() {
     let promises = [];
     
     if (includeNormalCards) {
+        console.log('Including normal cards');
         promises.push(fetch('normal.json').then(response => response.json()));
     }
     if (include18PlusCards) {
+        console.log('Including 18+ cards');
         promises.push(fetch('18plus.json').then(response => response.json()));
     }
     if (includeSpecialCards) {
+        console.log('Including special cards');
         promises.push(fetch('special.json').then(response => response.json()));
     }
     
@@ -30,6 +34,7 @@ function loadPhrases() {
             results.forEach(data => {
                 phrases = phrases.concat(data);
             });
+            console.log('Phrases loaded:', phrases);
             document.getElementById('total-cards').textContent = phrases.length;
             document.getElementById('card-count').textContent = cardCount;
             updateCurrentPlayer();
@@ -106,5 +111,15 @@ function startGame(playerNames, includeNormalCards, include18PlusCards, includeS
     sessionStorage.setItem('usedPhrases', JSON.stringify(usedPhrases));
     sessionStorage.setItem('cardCount', cardCount.toString());
     sessionStorage.setItem('currentPlayerIndex', currentPlayerIndex.toString());
+    
+    // Frissítjük a változókat a sessionStorage alapján
+    includeNormalCards = sessionStorage.getItem('includeNormalCards') === 'true';
+    include18PlusCards = sessionStorage.getItem('include18PlusCards') === 'true';
+    includeSpecialCards = sessionStorage.getItem('includeSpecialCards') === 'true';
+
+    console.log('Starting game with settings:', {
+        players, includeNormalCards, include18PlusCards, includeSpecialCards
+    });
+    
     loadPhrases();
 }
