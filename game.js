@@ -73,6 +73,20 @@ function flipCard() {
         // Animáljuk a sörös korsó mozgását
         const beerMug = document.getElementById('beer-mug');
         beerMug.style.transform = `translateY(${100 - remainingPercentage}%)`;
+
+        const cardBack = document.querySelector('.card.flipped .back');
+        cardBack.classList.remove('normal', 'plus18', 'special');
+
+        if (includeNormalCards && selectedPhrase.type === 'normal') {
+            cardBack.classList.add('normal');
+            cardBack.classList.add('normalFlip');
+        } else if (include18PlusCards && selectedPhrase.type === 'plus18') {
+            cardBack.classList.add('plus18');
+            cardBack.classList.add('plus18Flip');
+        } else if (includeSpecialCards && selectedPhrase.type === 'special') {
+            cardBack.classList.add('special');
+            cardBack.classList.add('specialFlip');
+        }
     }
 }
 
