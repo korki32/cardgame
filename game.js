@@ -5,6 +5,7 @@ let currentPlayerIndex = parseInt(sessionStorage.getItem('currentPlayerIndex')) 
 let includeNormalCards = sessionStorage.getItem('includeNormalCards') === 'true';
 let include18PlusCards = sessionStorage.getItem('include18PlusCards') === 'true';
 let includeSpecialCards = sessionStorage.getItem('includeSpecialCards') === 'true';
+let phrases = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     loadPhrases();
@@ -25,6 +26,7 @@ function loadPhrases() {
     
     Promise.all(promises)
         .then(results => {
+            phrases = [];
             results.forEach(data => {
                 phrases = phrases.concat(data);
             });
@@ -49,14 +51,7 @@ function flipCard() {
         const selectedPhrase = remainingPhrases[randomIndex];
         usedPhrases.push(selectedPhrase);
 
-        // Ellenőrizni kell, hogy a kártya különleges-e
-        if (phrases.includes(selectedPhrase)) {
-            handleSpecialCard(selectedPhrase);
-            card.classList.add('special-card');
-        } else {
-            document.getElementById('card-text').textContent = selectedPhrase;
-            card.classList.remove('special-card');
-        }
+        document.getElementById('card-text').textContent = selectedPhrase;
 
         cardCount++;
         document.getElementById('card-count').textContent = cardCount;
@@ -73,25 +68,7 @@ function flipCard() {
         // Animáljuk a sörös korsó mozgását
         const beerMug = document.getElementById('beer-mug');
         beerMug.style.transform = `translateY(${100 - remainingPercentage}%)`;
-    } else {
-        card.classList.remove('special-card');
     }
-}
-
-function handleSpecialCard(phrase) {
-    const randomPlayerIndex = Math.floor(Math.random() * players.length);
-    const randomPlayer = players[randomPlayerIndex];
-    let message = phrase.replace("válassz egy játékost", randomPlayer);
-    document.getElementById('card-text').textContent = message;
-    animateSpecialEffect();
-}
-
-function animateSpecialEffect() {
-    const card = document.getElementById('card');
-    card.classList.add('special-card-animation');
-    setTimeout(() => {
-        card.classList.remove('special-card-animation');
-    }, 1000); // Adjust timing as needed
 }
 
 function updateCurrentPlayer() {
@@ -105,7 +82,7 @@ document.getElementById('player-form').addEventListener('submit', function (even
     
     const playerNames = document.getElementById('players').value.split(',').map(name => name.trim());
     const includeNormalCards = document.getElementById('include-normal-cards').checked;
-    const include18Cards = document.getElementById('include-18-cards').checked;
+    const include18PlusCards = document.getElementById('include-18-cards').checked;
     const includeSpecialCards = document.getElementById('include-special-cards').checked;
 
     if (playerNames.length === 0) {
@@ -115,13 +92,13 @@ document.getElementById('player-form').addEventListener('submit', function (even
 
     sessionStorage.setItem('players', JSON.stringify(playerNames));
     sessionStorage.setItem('includeNormalCards', includeNormalCards.toString());
-    sessionStorage.setItem('include18Cards', include18Cards.toString());
+    sessionStorage.setItem('include18PlusCards', include18PlusCards.toString());
     sessionStorage.setItem('includeSpecialCards', includeSpecialCards.toString());
 
-    startGame(playerNames, includeNormalCards, include18Cards, includeSpecialCards);
+    startGame(playerNames, includeNormalCards, include18PlusCards, includeSpecialCards);
 });
 
-function startGame(playerNames, includeNormalCards, include18Cards, includeSpecialCards) {
+function startGame(playerNames, includeNormalCards, include18PlusCards, includeSpecialCards) {
     players = playerNames;
     currentPlayerIndex = 0;
     usedPhrases = [];
