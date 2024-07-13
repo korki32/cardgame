@@ -1,34 +1,18 @@
-/* Alapértelmezett betűtípus beállítása */
 @font-face {
   font-family: "Mona Sans";
-  src: url("https://fonts.gstatic.com/s/monosans/v1/U5MJAZGFsGd0ErGyXlOp_w.woff2")
-    format("woff2");
+  src: url("https://fonts.gstatic.com/s/monosans/v1/U5MJAZGFsGd0ErGyXlOp_w.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
-/* Színváltozó beállítások */
 :root {
-  --card-color: hsl(260deg 100% 3%);
-  --text-color: hsl(260deg 10% 55%);
-  --card-radius: 3.6vw;
+  --card-color: #333;
+  --text-color: #555;
+  --card-radius: 10px;
   --card-width: 35vw;
   --border-width: 3px;
   --bg-size: 1;
-
-  --hue: 0;
-  --hue-speed: 1;
-
-  --rotate: 0;
-  --animation-speed: 4s;
-
-  --interaction-speed: 0.55s;
-  --glow-scale: 1.5;
-  --scale-factor: 1;
-  --glow-blur: 6;
-  --glow-opacity: 1;
-  --glow-radius: 100;
-  --glow-rotate-unit: 1deg;
+  --glow-color: rgba(255, 255, 0, 0.5);
 }
 
 /* Test háttér animáció */
@@ -152,15 +136,12 @@ button:hover {
 
 /* Glow stílusok */
 .card .glow {
-  --glow-translate-y: 0;
-  display: block;
   position: absolute;
-  width: calc(var(--card-width) / 5);
-  height: calc(var(--card-width) / 5);
-  animation: rotate var(--animation-speed) linear infinite;
-  transform: rotateZ(calc(var(--rotate) * var(--glow-rotate-unit)));
-  transform-origin: center;
-  border-radius: calc(var(--glow-radius) * 10vw);
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  box-shadow: 0 0 20px var(--glow-color);
+  pointer-events: none;
 }
 
 .card .glow:after {
