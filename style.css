@@ -15,7 +15,6 @@
   --glow-color: rgba(255, 255, 0, 0.5);
 }
 
-/* Test háttér animáció */
 body {
   background: #FF0000; /* Az általad választott háttérszín */
   height: 100vh;
@@ -26,19 +25,7 @@ body {
   justify-content: center;
   font-family: "Mona Sans", sans-serif;
 }
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
-/* Konténer stílusok */
 .container, .game-container {
   text-align: center;
   background: rgba(255, 255, 255, 0.8);
@@ -55,7 +42,6 @@ label {
   color: #555;
 }
 
-/* Gomb stílusok */
 button {
   padding: 15px 30px;
   font-size: 18px;
@@ -74,7 +60,6 @@ button:hover {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Kártya stílusok */
 .card {
   width: 80vw;
   height: 60vh;
@@ -106,6 +91,13 @@ button:hover {
 .card .front {
   background-color: #f8f8f8;
   color: #333;
+  overflow: hidden; /* Biztosítja, hogy a kép ne lógjon ki a kártya elülső részéből */
+}
+
+.card .front img {
+  width: 100%; /* A kép teljes szélességben elfoglalja a kártya elülső részét */
+  height: 100%; /* A kép teljes magasságban elfoglalja a kártya elülső részét */
+  border-radius: 10px;
 }
 
 .card .back {
@@ -114,13 +106,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; /* Új glow elem miatt */
-}
-
-.card .front img {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 10px;
+  position: relative;
 }
 
 .card.flipped .front {
@@ -150,9 +136,7 @@ button:hover {
   height: 130%;
   left: -15%;
   top: -15%;
-  background: hsl(
-    calc(calc(var(--hue) * var(--hue-speed)) * 1deg) 100% 60%
-  );
+  background: hsl(calc(calc(var(--hue) * var(--hue-speed)) * 1deg) 100% 60%);
   position: relative;
   border-radius: calc(var(--glow-radius) * 10vw);
   animation: hue-animation var(--animation-speed) linear infinite;
@@ -166,7 +150,6 @@ button:hover {
   position: absolute;
 }
 
-/* Hover és flipped állapot stílusok */
 .card:hover .glow, .card.flipped .glow {
   --glow-blur: 1.5;
   --glow-opacity: 0.6;
@@ -186,7 +169,6 @@ button:hover {
     --glow-radius 0.05s ease;
 }
 
-/* Animációk */
 @keyframes shadow-pulse {
   0%, 24%, 46%, 73%, 96% {
     --white-shadow: 0.5;
@@ -257,7 +239,6 @@ button:hover {
   }
 }
 
-/* További glow stílusok */
 .card .glow {
   background: transparent;
 }
@@ -267,78 +248,23 @@ button:hover {
   transition: transform 0.3s;
 }
 
-
 @keyframes normalFlip {
-    0% {
-        transform: rotateY(180deg);
-    }
-    50% {
-        transform: rotateY(270deg);
-    }
-    100% {
-        transform: rotateY(360deg);
-    }
+  0% {
+    transform: rotateY(180deg);
+  }
+  50% {
+    transform: rotateY(270deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
 }
 
 @keyframes plus18Flip {
-    0% {
-        transform: rotateY(180deg);
-    }
-    50% {
-        transform: rotateY(300deg);
-    }
-    100% {
-        transform: rotateY(360deg);
-    }
-}
-
-@keyframes specialFlip {
-    0% {
-        transform: rotateY(180deg);
-    }
-    50% {
-        transform: rotateY(240deg);
-    }
-    100% {
-        transform: rotateY(360deg);
-    }
-}
-
-#current-player {
-    font-size: 24px;
-    margin-top: 20px;
-}
-
-.counter {
-    margin-top: 10px;
-    font-size: 18px;
-}
-
-
-#remaining-cards {
-    margin-top: 10px;
-    width: 80vw;
-    max-width: 300px;
-    height: 50px; /* Magasság beállítása a sörös korsó számára */
-    position: relative; /* Relatív pozíció beállítása a gyerek elemhez */
-}
-
-#remaining-bar {
-    height: 100%;
-    background-color: #f8b400; /* Sárga háttérszín */
-    width: 100%; /* Kezdeti szélesség */
-    border-radius: 5px;
-    overflow: hidden; /* Túlcsorduló tartalom elrejtése */
-    position: absolute; /* Abszolút pozíció beállítása a gyerek elemhez */
-    bottom: 0; /* Alsó pozíció beállítása */
-}
-
-#beer-mug {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 50px; /* Állítsuk be a megfelelő magasságot */
-    width: auto; /* Automatikus szélesség beállítása az arányos megjelenés érdekében */
-    transform: translateY(100%);
-    transition: transform 0.6s ease-in-out;
-}
+  0% {
+    transform: rotateY(180deg);
+  }
+  50% {
+    transform: rotateY(300deg);
+  }
+ 
