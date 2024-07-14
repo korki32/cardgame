@@ -1,195 +1,252 @@
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	height: 100vh;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  overflow: hidden;
+  display: grid;
+  place-content: center;
 }
 
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
+@property --anim {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
 
 .container, .game-container {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
 }
 
 h1, h2 {
-    color: #333;
+  color: #333;
 }
 
 label {
-    font-size: 18px;
-    color: #555;
+  font-size: 18px;
+  color: #555;
 }
 
 button {
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-    margin-top: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  background-color: #0056b3;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .card {
-    width: 80vw;
-    height: 60vh;
-    max-width: 300px;
-    max-height: 450px;
-    perspective: 1000px;
-    cursor: pointer;
-    margin: 20px auto;
-    position: relative;
+  --anim: 0;
+  --radius: 0.75rem;
+  width: 80vw;
+  height: 60vh;
+  max-width: 300px;
+  max-height: 450px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 20px auto;
+  position: relative;
+  display: grid;
+  transition: --anim 300ms ease;
+}
+
+.card:hover {
+  --anim: 1;
+}
+
+.cardglow, .cardbg, .cardborder, .numbers {
+  grid-area: 1/1/2/2; 
+}
+
+.cardglow, .cardborder, .numbers {
+  background: conic-gradient(#ff3b3b,
+  #ffa801,
+  #ffeb3b,
+  #6cff3b,
+  #0fbcf9,
+  #5d62fb,
+  #eb3bff,
+  #ff3b3b);
+}
+
+.cardglow {
+  border-radius: 0.25rem;
+  filter: blur(calc(0.375rem + var(--anim) * 0.25rem)) hue-rotate(calc(20deg * var(--anim)));
+}
+
+.cardborder {
+  border-radius: var(--radius);
+  filter: hue-rotate(calc(20deg * var(--anim)));
+}
+
+.cardbg {
+  margin: 0.125rem;
+  border-radius: calc(var(--radius) - 0.125rem);
+  background: none;
+  backdrop-filter: contrast(50%) brightness(15%) blur(1.25rem);
+  box-shadow: inset rgba(0,0,0,0.5) 0 0 0.625rem;
+  display: grid;
 }
 
 .card .front, .card .back {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    padding: 20px;
-    box-sizing: border-box;
-    transition: transform 0.6s;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform 0.6s;
 }
 
 .card .front {
-    background-color: #f8f8f8;
-    color: #333;
+  background-color: #f8f8f8;
+  color: #333;
 }
 
 .card .back {
-    transform: rotateY(180deg);
-    background-color: #4caf50; /* Hátoldal alapszíne */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  transform: rotateY(180deg);
+  background-color: #4caf50; /* Hátoldal alapszíne */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card .front img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 10px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
 }
 
 .card.flipped .front {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .card.flipped .back {
-    transform: rotateY(360deg);
+  transform: rotateY(360deg);
 }
 
 .card.flipped .back.normal {
-    animation: normalFlip 1s ease-in-out forwards; /* Normál kártya animáció */
+  animation: normalFlip 1s ease-in-out forwards; /* Normál kártya animáció */
 }
 
 .card.flipped .back.plus18 {
-    animation: plus18Flip 1s ease-in-out forwards; /* +18 kártya animáció */
+  animation: plus18Flip 1s ease-in-out forwards; /* +18 kártya animáció */
 }
 
 .card.flipped .back.special {
-    animation: specialFlip 1s ease-in-out forwards; /* Speciális kártya animáció */
+  animation: specialFlip 1s ease-in-out forwards; /* Speciális kártya animáció */
 }
 
 @keyframes normalFlip {
-    0% {
-        transform: rotateY(180deg);
-    }
-    50% {
-        transform: rotateY(270deg);
-    }
-    100% {
-        transform: rotateY(360deg);
-    }
+  0% {
+    transform: rotateY(180deg);
+  }
+  50% {
+    transform: rotateY(270deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
 }
 
 @keyframes plus18Flip {
-    0% {
-        transform: rotateY(180deg);
-    }
-    50% {
-        transform: rotateY(300deg);
-    }
-    100% {
-        transform: rotateY(360deg);
-    }
+  0% {
+    transform: rotateY(180deg);
+  }
+  50% {
+    transform: rotateY(300deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
 }
 
 @keyframes specialFlip {
-    0% {
-        transform: rotateY(180deg);
-    }
-    50% {
-        transform: rotateY(240deg);
-    }
-    100% {
-        transform: rotateY(360deg);
-    }
+  0% {
+    transform: rotateY(180deg);
+  }
+  50% {
+    transform: rotateY(240deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
 }
 
 #current-player {
-    font-size: 24px;
-    margin-top: 20px;
+  font-size: 24px;
+  margin-top: 20px;
 }
 
 .counter {
-    margin-top: 10px;
-    font-size: 18px;
+  margin-top: 10px;
+  font-size: 18px;
 }
 
-
 #remaining-cards {
-    margin-top: 10px;
-    width: 80vw;
-    max-width: 300px;
-    height: 50px; /* Magasság beállítása a sörös korsó számára */
-    position: relative; /* Relatív pozíció beállítása a gyerek elemhez */
+  margin-top: 10px;
+  width: 80vw;
+  max-width: 300px;
+  height: 50px; /* Magasság beállítása a sörös korsó számára */
+  position: relative; /* Relatív pozíció beállítása a gyerek elemhez */
 }
 
 #remaining-bar {
-    height: 100%;
-    background-color: #f8b400; /* Sárga háttérszín */
-    width: 100%; /* Kezdeti szélesség */
-    border-radius: 5px;
-    overflow: hidden; /* Túlcsorduló tartalom elrejtése */
-    position: absolute; /* Abszolút pozíció beállítása a gyerek elemhez */
-    bottom: 0; /* Alsó pozíció beállítása */
+  height: 100%;
+  background-color: #f8b400; /* Sárga háttérszín */
+  width: 100%; /* Kezdeti szélesség */
+  border-radius: 5px;
+  overflow: hidden; /* Túlcsorduló tartalom elrejtése */
+  position: absolute; /* Abszolút pozíció beállítása a gyerek elemhez */
+  bottom: 0; /* Alsó pozíció beállítása */
 }
 
 #beer-mug {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 50px; /* Állítsuk be a megfelelő magasságot */
-    width: auto; /* Automatikus szélesség beállítása az arányos megjelenés érdekében */
-    transform: translateY(100%);
-    transition: transform 0.6s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50px; /* Állítsuk be a megfelelő magasságot */
+  width: auto; /* Automatikus szélesség beállítása az arányos megjelenés érdekében */
+  transform: translateY(100%);
+  transition: transform 0.6s ease-in-out;
 }
