@@ -9,20 +9,24 @@
 <body>
     <div class="game-container">
         <div class="card" id="card" onclick="flipCard()">
-            <div class="front">
-                <img src="cardbackteszt.jpg" alt="Card Back Image">    
+            <div class="cardglow"></div>
+            <div class="cardborder"></div>
+            <div class="cardbg">
+                <div class="front">
+                    <img src="cardbackteszt.jpg" alt="Card Back Image">
+                </div>
+                <div class="back" id="card-text"></div>
             </div>
-            <div class="back" id="card-text"></div>
         </div>
         <div id="current-player">Játékos: </div>
         <div class="counter">
             <span id="card-count">0</span>/<span id="total-cards">0</span>
         </div>
         <div id="remaining-cards" class="counter" align="center">
-    <div id="remaining-bar">
-        <img id="beer-mug" src="beer-mug.ico" alt="Beer Mug">
-    </div>
-</div>
+            <div id="remaining-bar">
+                <img id="beer-mug" src="beer-mug.ico" alt="Beer Mug">
+            </div>
+        </div>
     </div>
     <script src="game.js"></script>
 </body>
